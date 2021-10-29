@@ -46,7 +46,7 @@ io.on('connection', cliente => {
     io.emit('mensaje', { mensaje: "bienvenido de nuevo" });
 })
 
-server.listen(port, (err) => {
+server.listen(port || 6380, (err) => {
     if (err) throw new Error(err);
     console.log(`servidor corriendo y ejecutandose en puerto ${port}`)
 });
