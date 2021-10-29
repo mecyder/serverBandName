@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Server</title>
+</head>
+
+<body>
+    <h1>Acceso Denegado</h1>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on(' ', () => {
+            console.log('servidor conectado');
+        });
+        socket.on('disconnect', () => {
+            console.log('perdimos coneccion');
+        })
+        socket.emit('mensaje', 'Hola Servidor, soy el cliente HTML');
+        socket.on('mensaje', (payload) => {
+            console.log(payload['nombre']);
+        });
+        socket.on('mensaje-flutter', (payload) => {
+            console.log(payload);
+        });
+        socket.on('activeBand', (payload) => {
+            console.clear();
+            console.table(payload);
+        })
+    </script>
+</body>
+
+</html>
